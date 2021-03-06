@@ -3,6 +3,7 @@ package org.launchcode.javawebdevtechjobsmvc.controllers;
 import org.launchcode.javawebdevtechjobsmvc.models.Job;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -10,6 +11,7 @@ import org.launchcode.javawebdevtechjobsmvc.models.JobData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -28,6 +30,7 @@ public class ListController {
         columnChoices.put("positionType", "Position Type");
         columnChoices.put("coreCompetency", "Skill");
 
+
         tableChoices.put("employer", JobData.getAllEmployers());
         tableChoices.put("location", JobData.getAllLocations());
         tableChoices.put("positionType", JobData.getAllPositionTypes());
@@ -37,7 +40,7 @@ public class ListController {
     @RequestMapping(value = "")
     public String list(Model model) {
         model.addAttribute("columns", columnChoices);
-        model.addAttribute("tableChoices", tableChoices);
+        model.addAttribute("tableChoices" , tableChoices);
         model.addAttribute("employers", JobData.getAllEmployers());
         model.addAttribute("locations", JobData.getAllLocations());
         model.addAttribute("positions", JobData.getAllPositionTypes());
@@ -60,4 +63,17 @@ public class ListController {
 
         return "list-jobs";
     }
+    @GetMapping("list-jobs")
+    public String listJobs(Model model) {
+        List<String> jobs = new ArrayList<>();
+        jobs.add("all");
+        jobs.add("employers");
+        jobs.add("locations");
+        jobs.add("positions");
+        jobs.add("skills");
+        model.addAttribute("jobs", jobs);
+
+        return "list-jobs";
+    }
+
 }

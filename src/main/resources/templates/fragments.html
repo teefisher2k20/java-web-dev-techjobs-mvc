@@ -11,7 +11,7 @@
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
 </head>
 
-<body>
+<body class="container">
 
     <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -20,8 +20,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a th:href="@{/search}">Search</a></li>
-                    <li><a th:href="@{/list}">List</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/search}">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/list}">List</a></li>
                 </ul>
             </div>
         </div>

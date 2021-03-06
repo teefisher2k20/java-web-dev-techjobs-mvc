@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body>
+<body class="container">
+
 
 <div th:replace="fragments :: page-header"></div>
 
@@ -11,6 +12,9 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <form th:action="@{/search/results}" method = "post">
+        <div class="form-group">
+
+
         <h2>Search by:</h2>
 
         <p>
@@ -18,20 +22,24 @@
                 <input
                         type="radio"
                         name="searchType"
+                        class="btn btn-success"
                         th:id="${column.key}"
                         th:value="${column.key}"
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
+        </div>
 
         </p>
 
         <p>
-            <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <label for="searchTerm">Keyword:
+            <input type="text" name="searchTerm" id="searchTerm" class="btn btn-success"/>
+            </label>
         </p>
-
-        <input type="submit" value="Search" />
+        <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-success"/>
+        </div>
     </form>
 
     <hr />
