@@ -12,7 +12,7 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <form th:action="@{/search/results}" method = "post">
-        <div class="form-group">
+
 
 
         <h2>Search by:</h2>
@@ -22,30 +22,35 @@
                 <input
                         type="radio"
                         name="searchType"
-                        class="btn btn-success"
                         th:id="${column.key}"
                         th:value="${column.key}"
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
-        </div>
+
 
         </p>
 
         <p>
-            <label for="searchTerm">Keyword:
-            <input type="text" name="searchTerm" id="searchTerm" class="btn btn-success"/>
-            </label>
+            <label for="searchTerm">Keyword:</label>
+            <input type="text" name="searchTerm" id="searchTerm"/>
         </p>
-        <div class="form-group">
-        <input type="submit" value="Search" class="btn btn-success"/>
-        </div>
+        <input type="submit" value="Search"/>
     </form>
 
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
-
+<table class=" job-listing">
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.id}"></td>
+        <td th:text="${job.name}"></td>
+        <td th:text="${job.employer}"></td>
+        <td th:text="${job.location}"></td>
+        <td th:text="${job.positionType}"></td>
+        <td th:text="${job.coreCompetency}"></td>
+    </tr>
+</table>
 </div>
 
 </body>

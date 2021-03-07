@@ -35,6 +35,7 @@ public class ListController {
         tableChoices.put("location", JobData.getAllLocations());
         tableChoices.put("positionType", JobData.getAllPositionTypes());
         tableChoices.put("coreCompetency", JobData.getAllCoreCompetency());
+
     }
 
     @RequestMapping(value = "")
@@ -63,17 +64,4 @@ public class ListController {
 
         return "list-jobs";
     }
-    @GetMapping("list-jobs")
-    public String listJobs(Model model) {
-        List<String> jobs = new ArrayList<>();
-        jobs.add("all");
-        jobs.add("employers");
-        jobs.add("locations");
-        jobs.add("positions");
-        jobs.add("skills");
-        model.addAttribute("jobs", jobs);
-
-        return "list-jobs";
-    }
-
 }
